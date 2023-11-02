@@ -12,12 +12,12 @@ const path = require("path");
 const main = require("./src/router");
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = 3000;
 
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: ["*"],
   })
 );
 app.use(cookieParser());
@@ -50,6 +50,6 @@ app.use((err, req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`SERVER RUNNING ${PORT}`);
+app.listen(3000, () => {
+  console.log(`SERVER RUNNING 3000`);
 });

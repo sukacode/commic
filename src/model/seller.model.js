@@ -7,10 +7,9 @@ const sellerModel = {
   create: (data) => {
     return pool.query(
       `
-      INSERT INTO seller (id, first_name, no_identity) VALUES ($1, $2, $3)
+      INSERT INTO seller (first_name, no_identity) VALUES ($1, $2)
         `,
       [
-        data.id,
         data.first_name,
         data.no_identity
       ]
@@ -23,8 +22,8 @@ const sellerModel = {
     return pool.query(
       `
     UPDATE seller SET
-    first_name = COALESCE($1, first_name),
-    no_identity = COALESCE($2, no_identity)
+    first_name = $1,  
+    no_identity = $2
     WHERE id = $3
     `,
       [

@@ -8,14 +8,13 @@ const sellerController = {
       response(res, seller, 200, "Get data success");
     } catch (err) {
       console.log(err);
-      next(new createError.InternalServerError());
+      response(res, "", 500, `${err}`);
     }
   },
   insert: async (req, res, next) => {
     try {
-      const { id, first_name, no_identity } = req.body;
+      const { first_name, no_identity } = req.body;
       const data = {
-        id,
         first_name,
         no_identity,
       };
@@ -41,13 +40,13 @@ const sellerController = {
   },
   update: async (req, res, next) => {
     try {
-      const { id } = req.params;
-      const { first_name, no_identity } = req.body;
+      const { id,first_name, no_identity } = req.body;
       const data = {
         id,
         first_name,
         no_identity,
       };
+
       await sellerModel.update(data);
       const {
         rows: [seller],

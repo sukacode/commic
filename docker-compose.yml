@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db:
+    container_name: database_seller
+    image: postgres:15.4-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=seller
+      - POSTGRES_DB=dbseller
+      - POSTGRES_PASSWORD=P@ssw0rd
+  api:
+    container_name: api-seller
+    build: .
+    command: npm run dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+
+    ports:
+      - "3000:3000"
+    
+    depends_on:
+      - db
+
+  
+
