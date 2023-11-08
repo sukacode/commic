@@ -4,7 +4,6 @@ const response = require("../helper/response.helper");
 const sellerController = {
   getAll: async (req, res, next) => {
     try {
-        console.log(this.getAll)
       const { rows: seller } = await sellerModel.getAll();
       response(res, seller, 200, "Get data success");
     } catch (err) {
@@ -17,12 +16,11 @@ const sellerController = {
       const { first_name, no_identity } = req.body;
       const data = {
         first_name,
-        no_identity,
-        address
+        no_identity
       };
       console.log(data);
       await sellerModel.create(data);
-      response(res, data, 200, "create data seller success");
+      response(res, data, 200, "create seller success");
     } catch (err) {
       console.log(err);
       next(new createError.InternalServerError());

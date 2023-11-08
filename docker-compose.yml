@@ -4,7 +4,7 @@ services:
     container_name: database_seller
     image: postgres:15.4-alpine
     ports:
-      - "5431:5432"
+      - "5432:5432"
     environment:
       - POSTGRES_USER=seller
       - POSTGRES_DB=dbseller
