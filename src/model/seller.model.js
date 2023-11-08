@@ -24,8 +24,9 @@ const sellerModel = {
       `
     UPDATE seller SET
     first_name = $1,  
-    no_identity = $2
-    WHERE id = $3
+    no_identity = $2,
+    address = $3,
+    WHERE id = $4
     `,
       [
         data.first_name,
