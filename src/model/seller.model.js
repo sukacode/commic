@@ -7,11 +7,12 @@ const sellerModel = {
   create: (data) => {
     return pool.query(
       `
-      INSERT INTO seller (first_name, no_identity) VALUES ($1, $2)
+      INSERT INTO seller (first_name, no_identity, address) VALUES ($1, $2, $3)
         `,
       [
         data.first_name,
-        data.no_identity
+        data.no_identity,
+        data.address
       ]
     );
   },

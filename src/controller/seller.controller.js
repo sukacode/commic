@@ -13,10 +13,11 @@ const sellerController = {
   },
   insert: async (req, res, next) => {
     try {
-      const { first_name, no_identity } = req.body;
+      const { first_name, no_identity, address } = req.body;
       const data = {
         first_name,
-        no_identity
+        no_identity,
+        address
       };
       console.log(data);
       await sellerModel.create(data);
